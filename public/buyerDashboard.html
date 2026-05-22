@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="" style="background-color: #F9F9FA;">
+<body class="buyer-dashboard" style="background-color: #F9F9FA;">
 
     <header class=" px-3 py-3" style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5; position: fixed; top: 0 ; right: 0 ; left: 0; z-index: 1;">
         <div class="d-flex justify-content-between align-items-center">
@@ -72,8 +72,7 @@
 
         <div id="messageAlert"></div>
 
-        <div class=" gap-3" id="productList"
-            style=" display: flex !important; flex-wrap: wrap !important; justify-content: stretch; overflow: hidden !important; ">
+        <div class=" gap-3" id="productList">
         </div>
 
     </div>
@@ -208,7 +207,7 @@
         const db = getDatabase(app);
         const buyerDetails = ""
 
-        // // CHECK USER LOGIN
+       
         onAuthStateChanged(auth, (user) => {
             if (user) {
 
@@ -223,10 +222,10 @@
             }
         });
 
-        // USER SIGNOUT
+      
         document.getElementById("signOut").addEventListener("click", () => {
             signOut(auth).then(() => {
-                // Show success message
+               
                 const alertMe = document.getElementById("messageAlert");
                 alertMe.style.display = "block";
                 alertMe.innerHTML = `
@@ -276,7 +275,6 @@
                 productsArray = Array.isArray(data) ? data : Object.values(data);
             }
 
-            // Attach seller shopName from sellers node when missing
             const productsWithShopName = await Promise.all(productsArray.map(async (item) => {
                 if (!item || item.shopName || !item.email) return item;
 
@@ -295,7 +293,7 @@
 
         });
 
-        // DISPLAY PRODUCTS FUNCTION
+      
         function displayProducts(productsToDisplay) {
             if (!productsToDisplay || productsToDisplay.length === 0) {
                 productList.innerHTML = '<h5>No products available</h5>';
@@ -323,7 +321,7 @@
                                 </div>
                                 <p class="card-text" style="flex: 1 !important">${item.productDescription}</p>
 
-                                <div class="d-flex justify-content-between; gap-2">
+                                <div class="product-card-footer d-flex justify-content-between align-items-center gap-2">
                                     <p style="font-size:12px !important">posted by: ${item.shopName|| item.name || "Unknown"} </p>
 
                                     <a href="#" class="btn px-2 py-1 ${buttonClass}" data-idx="${idx}" data-product='${JSON.stringify(item)}' style="font-size: 12px !important; ${buttonStyle}" ${buttonDisabled}>${buttonText}</a>
@@ -470,7 +468,7 @@
                 totalPrice += productTotal;
 
                 cartHTML += `
-                        <div clas="" style="display:flex !important; justify-content: space-between !important; align-items:center !important; gap:6px !important; margin-bottom:10px !important; border-bottom:1px solid #e5e5e5 !important; padding-bottom:6px !important;">
+                        <div class="pe-3" style="display:flex !important; justify-content: space-between !important; align-items:center !important; gap:6px !important; margin-bottom:10px !important; border-bottom:1px solid #e5e5e5 !important; padding-bottom:6px !important;">
                              <img src="${product.productImage}" alt="${product.productName}" class="cart-item-image">
                              
                              <div class="">
@@ -484,7 +482,7 @@
                                 <button class="qty-plus border-0" data-idx="${idx}">+</button>
                             </div>
 
-                            <button class="remove-btn removeFromCart" data-idx="${idx}">Remove</button>
+                            <button class="remove-btn removeFromCart " data-idx="${idx}">Remove</button>
                         </div>
                 `;
             });

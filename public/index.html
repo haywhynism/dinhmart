@@ -88,10 +88,11 @@
 
       <div class="startShop rounded-2 text-white py-2 w-75 text-center mb-3 "
         style="font-size: 14px; background-color: #030213;">
-        Start Shopping</div>
-      <div class="startShop  rounded-2 text-black py-2 w-75 text-center mb-3"
-        style="font-size: 14px; background-color: white;">
-        Become a Seller</div>
+        <a class="text-decoration-none text-white" href="buyerDashboard.html">Start Shopping</a>
+      </div>
+      <div href="registerPage.html" class="startShop  rounded-2 text-black py-2 w-75 text-center mb-3"
+        style="font-size: 14px; background-color: white;"> <a class="text-decoration-none text-black" href="registerPage.html">Become a Seller</a>
+        </div>
     </div>
 
   </section>
@@ -103,13 +104,12 @@
 
      
        
-      <div class=" gap-3" id="productList"
-        style=" display: flex !important; flex-wrap: wrap !important; justify-content: center; overflow: hidden !important; ">
+      <div class=" gap-3" id="productList">
       </div>
 
-      <div class=" signUpAllProducts rounded-2 text-white py-2 w-75  text-center mb-3 mt-3 mx-auto"
-        style="font-size: 14px; background-color: #030213;">
-        Sign Up to View All Products</div>
+      <div  class=" signUpAllProducts rounded-2 text-white py-2 w-75  text-center mb-3 mt-3 mx-auto"
+        style="font-size: 14px; background-color: #030213;"> <a class="text-decoration-none text-white" href="registerPage.html">Sign Up to View All Products</a>
+        </div>
 
     </div>
   </section>
@@ -258,7 +258,7 @@
     const buyerDetails = ""
 
     const dbRef = ref(db, "/products");
-    let allProducts = [];  // Store all products for filtering
+    let allProducts = [];  
 
     onValue(dbRef, async (snapshot) => {
 
@@ -302,7 +302,7 @@
 
     });
 
-    // DISPLAY PRODUCTS FUNCTION
+   
     function displayProducts(productsToDisplay) {
       productList.innerHTML = "";
       productsToDisplay.map((item, idx) => {
@@ -313,13 +313,13 @@
                             <img src="${item.productImage}" class="card-img-top" alt="..." height="250"  style="object-fit: cover;">
                             <div class="card-body p-2" style="display:flex !important; flex-direction:column !important; ">
                                 <h5 class="card-title">${item.productName}</h5>
-                                <div class="d-flex justify-contemt-between  ">
+                                <div class="d-flex justify-contemt-between  " style="justify-content:space-between !important">
                                     <p >₦${item.productPrice}</p>
                                     <p>Qty:${item.productQuantity}</p>
                                 </div>
                                 <p class="card-text" style="flex: 1 !important">${item.productDescription}</p>
 
-                                <div class="d-flex justify-content-between; gap-2">
+                                <div class="d-flex justify-content-between align-items-center gap-2">
                                     <p style="font-size:12px !important">posted by: ${item.shopName|| item.name || "Unknown"}</p>
 
                                     <a href="#" class="btn px-2 py-1 addToCart" data-idx="${idx}" data-product='${JSON.stringify(item)}' style="background-color: orange; color:white; font-size: 12px !important; width:60px !important">cart</a>
@@ -331,7 +331,7 @@
       })
     }
 
-    // SEARCH FUNCTIONALITY
+  
     document.getElementById("searchInput").addEventListener("keyup", (e) => {
       const searchTerm = e.target.value.toLowerCase().trim();
 
@@ -356,7 +356,7 @@
       }
     });
 
-    // ADD TO CART FUNCTIONALITY
+  
     productList.addEventListener("click", (e) => {
       e.preventDefault();
 
@@ -367,7 +367,7 @@
         let cart = localStorage.getItem("cart");
         cart = cart ? JSON.parse(cart) : [];
 
-        // Add product to cart
+    
         const existingProduct = cart.find(p => p.productName === productData.productName);
 
         if (existingProduct) {
@@ -403,7 +403,7 @@
       }
     });
 
-    // UPDATE CART COUNT
+   
     function updateCartCount() {
       let cart = localStorage.getItem("cart");
       cart = cart ? JSON.parse(cart) : [];
@@ -414,14 +414,14 @@
       }
     }
 
-    // CART ICON CLICK - SHOW CART ITEMS
+
     document.getElementById("cartIcon").addEventListener("click", () => {
       displayCartItems();
       document.getElementById("cartSidebar").classList.add("active");
       document.getElementById("cartOverlay").classList.add("active");
     });
 
-    // CLOSE CART
+    
     document.getElementById("closeCart").addEventListener("click", () => {
       document.getElementById("cartSidebar").classList.remove("active");
       document.getElementById("cartOverlay").classList.remove("active");
@@ -432,7 +432,7 @@
       document.getElementById("cartOverlay").classList.remove("active");
     });
 
-    // DISPLAY CART ITEMS IN SIDEBAR
+   
     function displayCartItems() {
       let cart = localStorage.getItem("cart");
       cart = cart ? JSON.parse(cart) : [];
@@ -454,7 +454,7 @@
 
         cartHTML += `
 
-                        <div clas="" style="display:flex !important; justify-content: space-between !important; align-items:center !important; gap:6px !important; margin-bottom:10px !important; border-bottom:1px solid #e5e5e5 !important; padding-bottom:6px !important;">
+                        <div class="pe-3" style="display:flex !important; justify-content: space-between !important; align-items:center !important; gap:6px !important; margin-bottom:10px !important; border-bottom:1px solid #e5e5e5 !important; padding-bottom:6px !important;">
                              <img src="${product.productImage}" alt="${product.productName}" class="cart-item-image">
                              
                              <div class="">
@@ -536,7 +536,7 @@
       });
     }
 
-    // BUY NOW - CHECK AUTHENTICATION BEFORE CHECKOUT
+    
     document.getElementById("buyNowBtn").addEventListener("click", () => {
     
       if (!auth.currentUser) {
