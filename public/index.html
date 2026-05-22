@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="bootstrap/css/boostrap.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="">
+
+  <header class="py-3 px-lg-5 py-md-3"
+    style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5; position: fixed; top: 0 ; right: 0 ; left: 0; z-index: 1;">
+    <div class="d-flex justify-content-between px-2 px-lg-0 align-items-center">
+      <div class="logoImg">
+        <svg width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- DM Icon -->
+          <g transform="translate(10,15)">
+            <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black" stroke-width="5" fill="none"
+              stroke-linejoin="round" />
+            <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="900"
+            letter-spacing="0.8" fill="black"> dínhmart </text>
+
+          <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+          <circle cx="215" cy="62" r="2.5" fill="black" />
+        </svg>
+      </div>
+
+      <div class=" middle-section d-none d-md-flex align-items-center gap-5 ">
+        <div>
+          <input id="searchInput" class="rounded-5 py-2 px-3" type="search" placeholder="search here...."
+            style="border: 1px solid #d1cfcf; width: 450px;">
+        </div>
+        <div class="d-none  d-lg-block">
+          <a href="" class="text-decoration-none text-dark me-4" style="font-weight: 500;">About</a>
+          <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">Contact</a>
+        </div>
+
+      </div>
+
+
+
+      <div class="d-flex align-items-center gap-4">
+        <!-- Cart Icon -->
+        <div class="car-t" style="position: relative; cursor: pointer;" id="cartIcon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="cartCount"
+            style="position: absolute; top: -8px; right: -8px; background-color: red; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">0</span>
+        </div>
+
+        <div class="signInButton rounded-2 d-none   d-lg-block" style="cursor: pointer; padding: 5px 11px !important">
+          <img src="" alt="">
+          <span id="signIn" style="font-weight: 500;">Sign in</span>
+        </div>
+        <button id="getStarted" class=" rounded-2"
+          style="background-color: black; color: white; border: none !important; padding: 5px 11px !important ;">Get
+          Started</button>
+      </div>
+    </div>
+  </header>
+  
+ 
+   <section class="px-2"
+    style="background: linear-gradient(to bottom, #F2F5F7, #F2F6F9, #F2F8FC,#F1F9FC,#F1F9FB,#F0F9FA, #F1F9FA); padding-top: 150px !important;">
+    <div class="text-center">
+      <p class="wellcome-text fs-4 fw-bold w-50 mx-auto  w-md-100 mb-2">WELCOME TO DÍNHMART </p>
+      <p class="des-text">Discover amazing products from trusted sellers around the world. Buy with confidence, sell with ease.</p>
+    </div>
+
+    <div
+    
+      class=" startShop-group d-flex d-lg-flex flex-column justify-content-center align-items-lg-center align-items-center mt-3">
+
+      <div class="startShop rounded-2 text-white py-2 w-75 text-center mb-3 "
+        style="font-size: 14px; background-color: #030213;">
+        Start Shopping</div>
+      <div class="startShop  rounded-2 text-black py-2 w-75 text-center mb-3"
+        style="font-size: 14px; background-color: white;">
+        Become a Seller</div>
+    </div>
+
+  </section>
+  <div class="d-flex justify-content-end me-2 mt-3 mb-3"  id="messageAlert"></div>
+  <section style="background-color: #F9F9FA;">
+    <div class="p-4">
+      <h1 style="font-size: 15px; text-align: center;">Featured Products</h1>
+      <p class="mb-md-4" style="text-align: center; font-size: 12px; color: #9595A2;">Trade with Ease</p>
+
+     
+       
+      <div class=" gap-3" id="productList"
+        style=" display: flex !important; flex-wrap: wrap !important; justify-content: center; overflow: hidden !important; ">
+      </div>
+
+      <div class=" signUpAllProducts rounded-2 text-white py-2 w-75  text-center mb-3 mt-3 mx-auto"
+        style="font-size: 14px; background-color: #030213;">
+        Sign Up to View All Products</div>
+
+    </div>
+  </section>
+
+  <footer class=" px-lg-3 mx-auto text-black">
+    <div
+      class="footer-group px-3 px-md-5 py-4 pt-md-5  d-md-flex justify-content-md-center  justify-content-lg-between  gap-md-5 pt-4 ">
+
+      <div class="footer-details px-xl-5 d-md-flex gap-5  ">
+
+        <div class="vite mb-5 me-md-4 text-black">
+          <div class="text-light mb-4"
+            style="color: #827989 !important; font-family: monospace; font-size: 12px !important;"><svg width="130"
+              viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- DM Icon -->
+              <g transform="translate(10,15)">
+                <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black" stroke-width="5"
+                  fill="none" stroke-linejoin="round" />
+                <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="900"
+                letter-spacing="0.8" fill="black"> dínhmart </text>
+
+              <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+              <circle cx="215" cy="62" r="2.5" fill="black" />
+            </svg></div>
+          <div class="d-grid gap-3" style="font-weight: 200 !important;">
+            <p class="text-decoration-none text-black" href="">Your trusted multi-vendor marketplace for quality
+              products from sellers worldwide.</p>
+          </div>
+        </div>
+
+        <div class="resources mb-5 me-md-4 ">
+          <p class="text-light mb-4"
+            style="color: #827989 !important; font-family: monospace; font-size: 12px !important;">ABOUT US
+          </p>
+          <div class="d-grid gap-3" style="font-weight: 200 !important;">
+            <a class="text-decoration-none text-black" href="">How it works</a>
+            <a class="text-decoration-none text-black" href="">Become a Seller</a>
+            <a class="text-decoration-none text-black" href="">Contact</a>
+          </div>
+        </div>
+
+        <div class="versions mb-5 me-md-4 text-black">
+          <p class="ayo mb-4"
+            style="color: #78717F !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+            SUPPORT</p>
+          <div class="d-grid gap-3" style="font-weight: 200 !important;">
+            <a class="text-decoration-none text-black" href="">Help Center</a>
+            <a class="text-decoration-none text-black" href="">Terms & Conditions</a>
+            <a class="text-decoration-none text-black" href="">Shipping information</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="footer-social-accounts mb-5 px-xl-5 text-black ">
+        <p class="text-light mb-4"
+          style="color: #827989 !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+          SOCIAL</p>
+        <div class="d-grid gap-3" style="font-weight: 200 !important;">
+          <a class="text-decoration-none text-black d-flex align-items-center gap-3 " href="">
+            <img height="22" src="vite/download (3).svg" alt="">
+            <span>Github</span>
+          </a>
+          <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+            <img height="22" src="vite/download (6).svg" alt="">
+            <span>Discord</span>
+          </a>
+          <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+            <img height="22" src="vite/download (7).svg" alt="">
+            <span>Bluesky</span>
+          </a>
+          <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+            <img height="22" src="vite/download (8).svg" alt="">
+            <span>X.com</span>
+          </a>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="px-3 px-md-5 py-3 " style="background-color: #F9F9FA;">
+      <p class=" px-md-4 text-white text-center" style="color: #827989 !important; font-size: 14px;">&#169 2025 DínMart.
+        All right Reserved</p>
+    </div>
+  </footer>
+
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div id="cartSidebar" class="p-2">
+    <div class="cart-header mb-2" style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5">
+      <h3>Cart</h3>
+      <button class="close-cart border-0 bg-transparent" id="closeCart">&times;</button>
+    </div>
+    <div id="cartItemsContainer" class="empty-cart">
+      Your cart is empty
+    </div>
+
+
+    <div class="cart-footer">
+      <div class="cart-total mb-2">
+        <span>Total:</span>
+        <span>₦<span id="cartFinalTotal">0</span></span>
+      </div>
+      <button class="checkout-btn rounded-2" id="buyNowBtn"
+        style="background-color: black; color: white; border: none !important; padding: 5px 11px !important ;">Proceed
+        to Checkout</button>
+    </div>
+  </div>
+
+  <script>
+
+    document.getElementById("signIn").addEventListener('click', () => {
+      window.location.href = "/loginpage.html"
+    })
+    document.getElementById("getStarted").addEventListener('click', () => {
+      window.location.href = "/registerPage.html"
+    })
+  </script>
+
+  <script type="module">
+    import User from "/User.js"
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+    import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDtme28j9rc5NIbv7mHOSncV9W_6NlGWp4",
+      authDomain: "chicmart-9c9f1.firebaseapp.com",
+      databaseURL: "https://chicmart-9c9f1-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "chicmart-9c9f1",
+      storageBucket: "chicmart-9c9f1.firebasestorage.app",
+      messagingSenderId: "860959606353",
+      appId: "1:860959606353:web:0744c14db06445b109da70"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getDatabase(app);
+    const buyerDetails = ""
+
+    const dbRef = ref(db, "/products");
+    let allProducts = [];  // Store all products for filtering
+
+    onValue(dbRef, async (snapshot) => {
+
+      const data = snapshot.val();
+
+      console.log(data);
+
+      let productsArray = [];
+      if (data && typeof data === "object") {
+        productsArray = Array.isArray(data) ? data : Object.values(data);
+      }
+
+      if (!productsArray || productsArray.length === 0) {
+        allProducts = [];
+        displayProducts([]);
+        return;
+      }
+
+      const productsWithShopName = await Promise.all(productsArray.map(async (item) => {
+        if (!item) return item;
+        if (item.shopName) return item;
+        if (!item.email) {
+          return {
+            ...item,
+            shopName: item.name || "Unknown"
+          };
+        }
+
+        const emailKey = item.email.replaceAll('.', '_');
+        const sellerSnapshot = await get(ref(db, `/sellers/${emailKey}`));
+        const sellerData = sellerSnapshot.val();
+
+        return {
+          ...item,
+          shopName: sellerData?.shopName || item.name || "Unknown"
+        };
+      }));
+
+      allProducts = productsWithShopName;
+      displayProducts(productsWithShopName);
+
+    });
+
+    // DISPLAY PRODUCTS FUNCTION
+    function displayProducts(productsToDisplay) {
+      productList.innerHTML = "";
+      productsToDisplay.map((item, idx) => {
+        if (!item) return;
+        productList.innerHTML += `
+
+                        <div class="card" style="width: 250px">
+                            <img src="${item.productImage}" class="card-img-top" alt="..." height="250"  style="object-fit: cover;">
+                            <div class="card-body p-2" style="display:flex !important; flex-direction:column !important; ">
+                                <h5 class="card-title">${item.productName}</h5>
+                                <div class="d-flex justify-contemt-between  ">
+                                    <p >₦${item.productPrice}</p>
+                                    <p>Qty:${item.productQuantity}</p>
+                                </div>
+                                <p class="card-text" style="flex: 1 !important">${item.productDescription}</p>
+
+                                <div class="d-flex justify-content-between; gap-2">
+                                    <p style="font-size:12px !important">posted by: ${item.shopName|| item.name || "Unknown"}</p>
+
+                                    <a href="#" class="btn px-2 py-1 addToCart" data-idx="${idx}" data-product='${JSON.stringify(item)}' style="background-color: orange; color:white; font-size: 12px !important; width:60px !important">cart</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    `;
+      })
+    }
+
+    // SEARCH FUNCTIONALITY
+    document.getElementById("searchInput").addEventListener("keyup", (e) => {
+      const searchTerm = e.target.value.toLowerCase().trim();
+
+      if (searchTerm === "") {
+
+        displayProducts(allProducts);
+      } else {
+  
+        const filteredProducts = allProducts.filter(item => {
+          if (!item) return false;
+          return (
+            item.productName.toLowerCase().includes(searchTerm) ||
+            item.productPrice.includes(searchTerm)
+          );
+        });
+
+        displayProducts(filteredProducts);
+
+        if (filteredProducts.length === 0) {
+          productList.innerHTML = `<h5>No products found matching "${searchTerm}"</h5>`;
+        }
+      }
+    });
+
+    // ADD TO CART FUNCTIONALITY
+    productList.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (e.target.classList.contains("addToCart")) {
+        const productData = JSON.parse(e.target.getAttribute("data-product"));
+
+
+        let cart = localStorage.getItem("cart");
+        cart = cart ? JSON.parse(cart) : [];
+
+        // Add product to cart
+        const existingProduct = cart.find(p => p.productName === productData.productName);
+
+        if (existingProduct) {
+   
+          existingProduct.quantity += 1;
+        } else {
+      
+          cart.push({
+            ...productData,
+            quantity: 1
+          });
+
+        }
+
+      
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+      
+        updateCartCount();
+
+        // Show success message
+        const alertMe = document.getElementById("messageAlert");
+        alertMe.style.display = "block";
+        alertMe.innerHTML = `
+                    <div class="alert alert-success text-center mb-2 py-1 px-2" role="alert">
+                        Product added to cart successfully!
+                    </div>
+                `;
+
+        setTimeout(() => {
+          alertMe.innerHTML = "";
+        }, 2000);
+      }
+    });
+
+    // UPDATE CART COUNT
+    function updateCartCount() {
+      let cart = localStorage.getItem("cart");
+      cart = cart ? JSON.parse(cart) : [];
+      const count = cart.length;
+      document.getElementById("cartCount").textContent = count;
+      if (count === 0) {
+        document.getElementById("cartCount").textContent = "0";
+      }
+    }
+
+    // CART ICON CLICK - SHOW CART ITEMS
+    document.getElementById("cartIcon").addEventListener("click", () => {
+      displayCartItems();
+      document.getElementById("cartSidebar").classList.add("active");
+      document.getElementById("cartOverlay").classList.add("active");
+    });
+
+    // CLOSE CART
+    document.getElementById("closeCart").addEventListener("click", () => {
+      document.getElementById("cartSidebar").classList.remove("active");
+      document.getElementById("cartOverlay").classList.remove("active");
+    });
+
+    document.getElementById("cartOverlay").addEventListener("click", () => {
+      document.getElementById("cartSidebar").classList.remove("active");
+      document.getElementById("cartOverlay").classList.remove("active");
+    });
+
+    // DISPLAY CART ITEMS IN SIDEBAR
+    function displayCartItems() {
+      let cart = localStorage.getItem("cart");
+      cart = cart ? JSON.parse(cart) : [];
+
+      const cartItemsContainer = document.getElementById("cartItemsContainer");
+      let totalPrice = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `<div class="empty-cart"><p>Your cart is empty</p></div>`;
+        document.getElementById("cartFinalTotal").textContent = "0";
+        return;
+      }
+
+      let cartHTML = "";
+
+      cart.forEach((product, idx) => {
+        const productTotal = product.productPrice * product.quantity;
+        totalPrice += productTotal;
+
+        cartHTML += `
+
+                        <div clas="" style="display:flex !important; justify-content: space-between !important; align-items:center !important; gap:6px !important; margin-bottom:10px !important; border-bottom:1px solid #e5e5e5 !important; padding-bottom:6px !important;">
+                             <img src="${product.productImage}" alt="${product.productName}" class="cart-item-image">
+                             
+                             <div class="">
+                                <div class="cart-item-name" style="font-size: 10px; text-wrap: nowrap">${product.productName}</div>
+                                <div class="cart-item-total" style="font-size: 10px">₦${productTotal}</div>
+                            </div>
+
+                             <div class="qty-control">
+                                <button class="qty-minus border-0" data-idx="${idx}">−</button>
+                                <input  type="text" value="${product.quantity}" class="qtyInput border-0 text-center" data-idx="${idx}">
+                                <button class="qty-plus border-0" data-idx="${idx}">+</button>
+                            </div>
+
+                            <button class="remove-btn removeFromCart" data-idx="${idx}">Remove</button>
+                        </div>
+                    
+                   
+                `;
+      });
+
+      cartItemsContainer.innerHTML = cartHTML;
+      document.getElementById("cartFinalTotal").textContent = totalPrice;
+
+      // Remove from cart functionality
+      document.querySelectorAll(".removeFromCart").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.getAttribute("data-idx");
+          let cart = localStorage.getItem("cart");
+          cart = cart ? JSON.parse(cart) : [];
+          cart.splice(idx, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          displayCartItems();
+        });
+      });
+
+      // Quantity Plus
+      document.querySelectorAll(".qty-plus").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.getAttribute("data-idx");
+          let cart = localStorage.getItem("cart");
+          cart = cart ? JSON.parse(cart) : [];
+          cart[idx].quantity += 1;
+          localStorage.setItem("cart", JSON.stringify(cart));
+          displayCartItems();
+        });
+      });
+
+      // Quantity Minus
+      document.querySelectorAll(".qty-minus").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.getAttribute("data-idx");
+          let cart = localStorage.getItem("cart");
+          cart = cart ? JSON.parse(cart) : [];
+          if (cart[idx].quantity > 1) {
+            cart[idx].quantity -= 1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCartItems();
+          }
+        });
+      });
+
+      // Update quantity
+      document.querySelectorAll(".qtyInput").forEach(input => {
+        input.addEventListener("change", (e) => {
+          const idx = e.target.getAttribute("data-idx");
+          const newQty = parseInt(e.target.value);
+          if (newQty < 1) {
+            alert("Quantity must be at least 1");
+            e.target.value = 1;
+            return;
+          }
+          let cart = localStorage.getItem("cart");
+          cart = cart ? JSON.parse(cart) : [];
+          cart[idx].quantity = newQty;
+          localStorage.setItem("cart", JSON.stringify(cart));
+          displayCartItems();
+        });
+      });
+    }
+
+    // BUY NOW - CHECK AUTHENTICATION BEFORE CHECKOUT
+    document.getElementById("buyNowBtn").addEventListener("click", () => {
+    
+      if (!auth.currentUser) {
+      
+        const userChoice = confirm("You must be logged in to proceed to checkout.\n\nClick OK to Login or Cancel to Register");
+
+        if (userChoice) {
+         
+          window.location.href = "/loginpage.html";
+        } else {
+     
+          window.location.href = "/registerPage.html";
+        }
+        return;
+      }
+
+     
+      let cart = localStorage.getItem("cart");
+      cart = cart ? JSON.parse(cart) : [];
+
+      if (cart.length === 0) {
+        alert("Your cart is empty");
+        return;
+      }
+
+      // Calculate total amount in kobo (Paystack uses kobo)
+      let totalAmount = 0;
+      cart.forEach(product => {
+        totalAmount += product.productPrice * product.quantity;
+      });
+
+      // Initialize Paystack
+      const handler = PaystackPop.setup({
+        key: 'pk_test_5ac0c9c8e9f7c3d8e9f7c3d8e9f7c3d8', 
+        email: auth.currentUser.email,
+        amount: totalAmount * 100, // Convert to kobo
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1), 
+        onClose: function () {
+          alert('Payment window closed.');
+        },
+        onSuccess: function (response) {
+    
+          alert('Payment successful! Reference: ' + response.reference);
+
+        
+
+          localStorage.removeItem("cart");
+          localStorage.setItem("cart", JSON.stringify([]));
+
+
+         
+          updateCartCount();
+
+     
+          document.getElementById("cartSidebar").classList.remove("active");
+          document.getElementById("cartOverlay").classList.remove("active");
+
+          // Show success message
+          const alertMe = document.getElementById("messageAlert");
+          alertMe.style.display = "block";
+          alertMe.innerHTML = `
+                        <div class="alert alert-success text-center mb-2 py-1 px-2" role="alert">
+                            Payment successful! Your order has been placed.
+                        </div>
+                    `;
+          setTimeout(() => {
+            alertMe.innerHTML = "";
+          }, 3000);
+        }
+      });
+      handler.openIframe();
+    });
+
+    
+    updateCartCount();
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+ 
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

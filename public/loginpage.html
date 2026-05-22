@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body style="background-color: #F9F9FA;">
+
+    <header class=" py-3" style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5; position: fixed; top: 0 ; right: 0 ; left: 0; z-index: 1;">
+        <div class="d-flex justify-content-around align-items-center">
+            <div class="logoImg">
+                <svg width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- DM Icon -->
+                    <g transform="translate(10,15)">
+                        <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black" stroke-width="5"
+                            fill="none" stroke-linejoin="round" />
+                        <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                        font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                    <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                    <circle cx="215" cy="62" r="2.5" fill="black" />
+                </svg>
+            </div>
+
+            <div class="d-none d-md-flex gap-5 ">
+                <a href="index.html" class="text-decoration-none text-dark" style="font-weight: 500;">Home</a>
+                <a href="index.html" class="text-decoration-none text-dark" style="font-weight: 500;">Carts</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">About</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">Contact</a>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+
+                <div class="signInButton rounded-2" style="cursor: pointer; padding: 5px 11px !important">
+                    <img src="" alt="">
+                    <span style="font-weight: 500;">Sign in</span>
+                </div>
+
+                <button class=" rounded-2"
+                    style="background-color: black; color: white; border: none !important; padding: 5px 11px !important ;">Get
+                    Started</button>
+            </div>
+
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="latest-code d-block d-md-block mx-auto rounded-2 p-3 "
+        style="background-color: white; width: 450px; border: 1px #E5E5E5 solid !important; margin-top: 80px !important;">
+
+        <div>
+            <p class="fw-bold fs-4 mb-1">Login to DínhMart</p>
+            <p class="fw-lighter mb-4">Sign in to your account</p>
+        </div>
+
+        <ul class=" d-flex justify-content-center pb-0 gap-lg-4 gap-md-3 nav nav-tab latest-code2 " id="myTab">
+
+            <li class="nav-item">
+                <div class="nav-link active text-black px-5 py-2 rounded-3" id="tab1-tab" data-bs-toggle="tab"
+                    data-bs-target="#content2" style="border: 1px #E5E5E5 solid !important;">
+                    Buyer
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <button class="nav-link text-black px-5 py-2 rounded-3" id="tab2-tab" data-bs-toggle="tab"
+                    data-bs-target="#content3" style="border: 1px #E5E5E5 solid !important;">
+                    Seller
+                </button>
+            </li>
+
+        </ul>
+        <!-- buyer Sign in session -->
+        <div class="tab-content py-3  ">
+            <div class=" collapse show active" id="content2">
+                <label class="mb-2" for="email" style="font-weight: 500;">Email</label>
+                <input type="email" class="form-control mb-3 rounded-2" id="email" placeholder="Enter your email"
+                    style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+
+                <label class="mb-2" for="email" style="font-weight: 500;">Password</label>
+                <input type="password" class="form-control mb-3 rounded-2" id="password"
+                    placeholder="Enter your password"
+                    style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+
+                <div class="mb-2" id="recaptcha-container"></div>
+
+                <button class="btn btn-dark w-100" id="buyerLoginBtn" style="padding: 8px 12px !important">Sign
+                    In</button>
+
+                <div class="d-flex align-items-center gap-2 mt-3">
+                    <hr class="flex-grow-1" style="border: 1px solid #E5E5E5;">
+                    <span style="font-weight: 500; color: #888888;">or</span>
+                    <hr class="flex-grow-1" style="border: 1px solid #E5E5E5;">
+                </div>
+                <div class="d-flex gap-3 justify-content-center">
+                    <img id="signInGoogleBuyer" src="img/google-svgrepo-com.svg" alt="gmaillogo" style="height: 35px;">
+                    <img src="img/github-svgrepo-com.svg" alt="githublogo" style="height: 35px;">
+                </div>
+
+                <div class="mt-3 d-flex justify-content-center">
+                    <p style="color: #8b8b99; font-size: 15px;">Don't have an account? <a
+                            class="text-black text-decoration-none" href="registerPage.html"
+                            style="font-weight: 500;">Register here</a></p>
+                </div>
+            </div>
+            <!-- seller Sign In session -->
+            <div class=" collapse" id="content3">
+                <label class="mb-2" for="email" style="font-weight: 500;">Email</label>
+                <input type="email" class="form-control mb-3 rounded-2" id="email" placeholder="Enter your email"
+                    style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+                    
+                <label class="mb-2" for="email" style="font-weight: 500;">Password</label>
+                <input type="password" class="form-control mb-3 rounded-2" id="password"
+                    placeholder="Enter your password"
+                    style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+
+
+                <button class="btn btn-dark w-100" id="sellerLoginBtn" style="padding: 8px 12px !important">Sign In</button>
+
+                <div class="d-flex align-items-center gap-2 mt-3">
+                    <hr class="flex-grow-1" style="border: 1px solid #E5E5E5;">
+                    <span style="font-weight: 500; color: #888888;">or</span>
+                    <hr class="flex-grow-1" style="border: 1px solid #E5E5E5;">
+                </div>
+                <div class="d-flex gap-3 justify-content-center">
+                    <img id="signInGoogle" src="img/google-svgrepo-com.svg" alt="" style="height: 35px !important;">
+                    <img src="img/github-svgrepo-com.svg" alt="" style="height: 35px !important;">
+                </div>
+
+                <div class="mt-3 d-flex justify-content-center">
+                    <p style="color: #8b8b99; font-size: 15px;">Don't have an account? <a
+                            class="text-black text-decoration-none" href="registerPage.html"
+                            style="font-weight: 500;">Register here</a></p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer class=" px-lg-3 mx-auto text-black mt-4">
+        <div
+            class="footer-group px-3 px-md-5 py-4 pt-md-5  d-md-flex justify-content-md-center  justify-content-lg-between  gap-md-5 pt-4 ">
+
+            <div class="footer-details px-xl-5 d-md-flex gap-5  ">
+
+                <div class="vite mb-5 me-md-4 text-black">
+                    <div class="text-light mb-4"
+                        style="color: #827989 !important; font-family: monospace; font-size: 12px !important;"><svg
+                            width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- DM Icon -->
+                            <g transform="translate(10,15)">
+                                <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black"
+                                    stroke-width="5" fill="none" stroke-linejoin="round" />
+                                <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                                font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                            <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                            <circle cx="215" cy="62" r="2.5" fill="black" />
+                        </svg></div>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <p class="text-decoration-none text-black" href="">Your trusted multi-vendor marketplace for
+                            quality products from sellers worldwide.</p>
+                    </div>
+                </div>
+
+                <div class="resources mb-5 me-md-4 ">
+                    <p class="text-light mb-4"
+                        style="color: #827989 !important; font-family: monospace; font-size: 12px !important;">ABOUT US
+                    </p>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <a class="text-decoration-none text-black" href="">How it works</a>
+                        <a class="text-decoration-none text-black" href="">Become a Seller</a>
+                        <a class="text-decoration-none text-black" href="">Contact</a>
+                    </div>
+                </div>
+
+                <div class="versions mb-5 me-md-4 text-black">
+                    <p class="ayo mb-4"
+                        style="color: #78717F !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+                        SUPPORT</p>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <a class="text-decoration-none text-black" href="">Help Center</a>
+                        <a class="text-decoration-none text-black" href="">Terms & Conditions</a>
+                        <a class="text-decoration-none text-black" href="">Shipping information</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="footer-social-accounts mb-5 px-xl-5 text-black ">
+                <p class="text-light mb-4"
+                    style="color: #827989 !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+                    SOCIAL</p>
+                <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3 " href="">
+                        <img height="22" src="vite/download (3).svg" alt="">
+                        <span>Github</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (6).svg" alt="">
+                        <span>Discord</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (7).svg" alt="">
+                        <span>Bluesky</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (8).svg" alt="">
+                        <span>X.com</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="px-3 px-md-5 py-3 " style="background-color: #F9F9FA;">
+            <p class=" px-md-4 text-white text-center" style="color: #827989 !important; font-size: 14px;">&#169 2025
+                DínMart.
+                All right Reserved</p>
+        </div>
+    </footer>
+    <script type="module">
+        import User from "/User.js"
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, RecaptchaVerifier, sendSignInLinkToEmail, isSignInWithEmailLink } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+        import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtme28j9rc5NIbv7mHOSncV9W_6NlGWp4",
+            authDomain: "chicmart-9c9f1.firebaseapp.com",
+            databaseURL: "https://chicmart-9c9f1-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "chicmart-9c9f1",
+            storageBucket: "chicmart-9c9f1.firebasestorage.app",
+            messagingSenderId: "860959606353",
+            appId: "1:860959606353:web:0744c14db06445b109da70"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider();
+        const db = getDatabase(app);
+
+        // let captcha
+
+        const render = () => {
+            window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container');
+            recaptchaVerifier.render().then((widgetId) => {
+                window.recaptchaWidgetId = widgetId;
+            });
+        }
+        render();
+
+        const actionCodeSettings = {
+            url: 'https://chicmart-9c9f1.web.app',
+
+            handleCodeInApp: true,
+
+        };
+
+        document.getElementById("sellerLoginBtn").addEventListener('click', async () => {
+            // This is the seller login from loginpage  
+            const emailValue = document.querySelectorAll('#content3 input[type="email"]')[0]?.value.trim();
+            const passwordValue = document.querySelectorAll('#content3 input[type="password"]')[0]?.value;
+
+            if (!emailValue || !passwordValue) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            try {
+                // Check if user exists in sellers database
+                const sellerRef = ref(db, `sellers/${emailValue.replace(/\./g, '_')}`);
+                const snapshot = await get(sellerRef);
+                
+                if (!snapshot.exists()) {
+                    alert("User not registered as a seller. Please register first.");
+                    return;
+                }
+
+                // User exists, proceed with sign in
+                const { signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js");
+                signInWithEmailAndPassword(auth, emailValue, passwordValue)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        const sellerData = snapshot.val();
+                        
+                        localStorage.setItem("user", JSON.stringify({
+                            fullname: sellerData.firstName + (sellerData.lastName ? ' ' + sellerData.lastName : ''),
+                            email: user.email,
+                            picture: "",
+                            id: user.uid
+                        }));
+                        localStorage.setItem("sellerData", JSON.stringify(sellerData));
+                        alert("Login successful!");
+                        window.location.href = "/sellerDashboard.html";
+                    })
+                    .catch((error) => {
+                        alert("Invalid email or password.");
+                        console.error(error);
+                    });
+            } catch (error) {
+                console.error("Error checking registration:", error);
+                alert("An error occurred. Please try again.");
+            }
+        });
+        // BUYER LOGIN WITH REGISTRATION CHECK
+        document.getElementById("buyerLoginBtn").addEventListener('click', async () => {
+            const emailValue = document.querySelectorAll('#content2 input[type="email"]')[0]?.value.trim();
+            const passwordValue = document.querySelectorAll('#content2 input[type="password"]')[0]?.value;
+
+            if (!emailValue || !passwordValue) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            try {
+                // Check if user exists in buyers database
+                const buyerRef = ref(db, `buyers/${emailValue.replace(/\./g, '_')}`);
+                const snapshot = await get(buyerRef);
+                
+                if (!snapshot.exists()) {
+                    alert("User not registered as a buyer. Please register first.");
+                    return;
+                }
+
+                // User exists, proceed with sign in
+                const { signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js");
+                signInWithEmailAndPassword(auth, emailValue, passwordValue)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        const buyerData = snapshot.val();
+                        
+                        localStorage.setItem("user", JSON.stringify({
+                            fullname: buyerData.fullname || user.displayName || "",
+                            email: user.email,
+                            picture: "",
+                            id: user.uid
+                        }));
+                        localStorage.setItem("buyerData", JSON.stringify(buyerData));
+                        alert("Login successful!");
+                        window.location.href = "/buyerDashboard.html";
+                    })
+                    .catch((error) => {
+                        alert("Invalid email or password.");
+                        console.error(error);
+                    });
+            } catch (error) {
+                console.error("Error checking registration:", error);
+                alert("An error occurred. Please try again.");
+            }
+        });
+
+        document.getElementById("signInGoogleBuyer").addEventListener('click', () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    const user = result.user;
+
+                    const localUser = new User(user.displayName, user.email, user.photoURL, user.uid);
+                    const buyerRef = ref(db, `buyers/${user.email.replace(/\./g, '_')}`);
+
+                    get(buyerRef).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const buyerData = snapshot.val();
+                            localUser.saveUser();
+                            localStorage.setItem("buyerData", JSON.stringify(buyerData));
+                            window.location.href = "/buyerDashboard.html";
+                        } else {
+                            alert("You are not registered as a buyer. Please register first.");
+                        }
+                    }).catch((error) => {
+                        console.error("Error checking buyer status:", error);
+                        alert("Error verifying user. Please try again.");
+                    });
+
+                }).catch((error) => {
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    const email = error.customData?.email;
+
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+
+                    console.error(errorCode, errorMessage, email, credential);
+                });
+
+        })
+
+        document.getElementById("signInGoogle").addEventListener('click', () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    const user = result.user;
+
+                    const localUser = new User(user.displayName, user.email, user.photoURL, user.uid);
+                    const sellerRef = ref(db, `sellers/${user.email.replace(/\./g, '_')}`);
+
+                    get(sellerRef).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const sellerData = snapshot.val();
+                            localUser.saveUser();
+                            localStorage.setItem("sellerData", JSON.stringify(sellerData));
+                            window.location.href = "/sellerDashboard.html";
+                        } else {
+                            alert("You are not registered as a seller. Please register first.");
+                        }
+                    }).catch((error) => {
+                        console.error("Error checking seller status:", error);
+                        alert("Error verifying user. Please try again.");
+                    });
+
+                }).catch((error) => {
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    const email = error.customData?.email;
+
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+
+                    console.error(errorCode, errorMessage, email, credential);
+                });
+
+        })
+
+
+
+
+
+
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

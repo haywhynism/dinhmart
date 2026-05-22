@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background-color: #F9F9FA;">
+
+
+    <header class=" px-3 py-3" style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5; position: fixed; top: 0 ; right: 0 ; left: 0; z-index: 1;">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="logoImg">
+                <svg width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- DM Icon -->
+                    <g transform="translate(10,15)">
+                        <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black" stroke-width="5"
+                            fill="none" stroke-linejoin="round" />
+                        <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                        font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                    <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                    <circle cx="215" cy="62" r="2.5" fill="black" />
+                </svg>
+            </div>
+
+            <div class="d-none ">
+                <a href="index.html" class="text-decoration-none text-dark" style="font-weight: 500;">Home</a>
+                <a href="index.html" class="text-decoration-none text-dark" style="font-weight: 500;">Carts</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">About</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">Contact</a>
+            </div>
+
+            <div class=" d-flex gap-4 me-3">
+                <div id="currentuser" class="d-flex  align-items-center gap-4">
+                </div>
+
+                <button class="rounded-2" id="signOut"
+                    style="background-color: black; color: white; border: none !important; padding: 5px 11px !important ;">Sign
+                    Out</button>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="p-3">
+        <h1 id="greetings" class="ms-2" style="font-size: 25px;">WELCOME,</h1>
+
+        <div class="d-flex justify-content-end pe-5">
+            <button class="rounded-2" id="addProduct"
+                style="background-color: black; color: white; border: none !important; padding: 5px 11px !important ;">Add
+                Product</button>
+        </div>
+
+        <div id="messageAlert"></div>
+
+        <div id="productForm"></div>
+
+
+    </div>
+
+
+
+    <div class="p-3">
+        <div class="gap-3" id="productList"
+            style=" display: flex !important; flex-wrap: wrap !important; justify-content: stretch; overflow: hidden !important; ">
+        </div>
+
+
+    </div>
+
+    <footer class=" px-lg-3 mx-auto text-black mt-4">
+        <div
+            class="footer-group px-3 px-md-5 py-4 pt-md-5  d-md-flex justify-content-md-center  justify-content-lg-between  gap-md-5 pt-4 ">
+
+            <div class="footer-details px-xl-5 d-md-flex gap-5  ">
+
+                <div class="vite mb-5 me-md-4 text-black">
+                    <div class="text-light mb-4"
+                        style="color: #827989 !important; font-family: monospace; font-size: 12px !important;"><svg
+                            width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- DM Icon -->
+                            <g transform="translate(10,15)">
+                                <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black"
+                                    stroke-width="5" fill="none" stroke-linejoin="round" />
+                                <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                                font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                            <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                            <circle cx="215" cy="62" r="2.5" fill="black" />
+                        </svg></div>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <p class="text-decoration-none text-black" href="">Your trusted multi-vendor marketplace for
+                            quality products from sellers worldwide.</p>
+                    </div>
+                </div>
+
+                <div class="resources mb-5 me-md-4 ">
+                    <p class="text-light mb-4"
+                        style="color: #827989 !important; font-family: monospace; font-size: 12px !important;">ABOUT US
+                    </p>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <a class="text-decoration-none text-black" href="">How it works</a>
+                        <a class="text-decoration-none text-black" href="">Become a Seller</a>
+                        <a class="text-decoration-none text-black" href="">Contact</a>
+                    </div>
+                </div>
+
+                <div class="versions mb-5 me-md-4 text-black">
+                    <p class="ayo mb-4"
+                        style="color: #78717F !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+                        SUPPORT</p>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <a class="text-decoration-none text-black" href="">Help Center</a>
+                        <a class="text-decoration-none text-black" href="">Terms & Conditions</a>
+                        <a class="text-decoration-none text-black" href="">Shipping information</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="footer-social-accounts mb-5 px-xl-5 text-black ">
+                <p class="text-light mb-4"
+                    style="color: #827989 !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+                    SOCIAL</p>
+                <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3 " href="">
+                        <img height="22" src="vite/download (3).svg" alt="">
+                        <span>Github</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (6).svg" alt="">
+                        <span>Discord</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (7).svg" alt="">
+                        <span>Bluesky</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (8).svg" alt="">
+                        <span>X.com</span>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="px-3 px-md-5 py-3 " style="background-color: #F9F9FA;">
+            <p class=" px-md-4 text-white text-center" style="color: #827989 !important; font-size: 14px;">&#169 2025
+                DínMart.
+                All right Reserved</p>
+        </div>
+    </footer>
+    <script type="module">
+        import User from "/User.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+        import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtme28j9rc5NIbv7mHOSncV9W_6NlGWp4",
+            authDomain: "chicmart-9c9f1.firebaseapp.com",
+            databaseURL: "https://chicmart-9c9f1-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "chicmart-9c9f1",
+            storageBucket: "chicmart-9c9f1.firebasestorage.app",
+            messagingSenderId: "860959606353",
+            appId: "1:860959606353:web:0744c14db06445b109da70"
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth();
+
+        const db = getDatabase(app);
+
+        let prodIndex = 0;
+
+
+        // // CHECK USER LOGIN
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                const userEmail = user.email;
+
+                console.log(uid);
+
+                // Fetch seller details from database
+                if (userEmail) {
+                    const sellerRef = ref(db, `sellers/${userEmail.replace(/\./g, '_')}`);
+                    get(sellerRef)
+                        .then((snapshot) => {
+                            if (snapshot.exists()) {
+                                const sellerData = snapshot.val();
+                                // Store seller data for use in greeting and other places
+                                localStorage.setItem("sellerData", JSON.stringify(sellerData));
+                                updateUserHeader(sellerData);
+                            }
+                        })
+                        .catch((error) => {
+                            console.log("Error fetching seller data:", error);
+                        });
+                }
+
+                // ...
+            } else {
+                window.location.href = "/";
+            }
+        });
+
+        // USER SIGNOUT
+        document.getElementById("signOut").addEventListener("click", () => {
+            signOut(auth).then(() => {
+                alert("Signed out successfully");
+                window.location.href = "/";
+            }).catch((error) => {
+                // An error happened.
+                console.log(error);
+                alert("Error signing out: " + error.message);
+            });
+        });
+
+
+        const updateUserHeader = (sellerData) => {
+            const getUser = localStorage.getItem("user");
+            const convertuser = getUser ? JSON.parse(getUser) : null;
+            let welcomeName = "Seller";
+
+            if (sellerData?.source === "form") {
+                welcomeName = sellerData.shopName || convertuser?.fullname || "Seller";
+            } else if (sellerData?.source === "google") {
+                welcomeName = convertuser?.fullname || sellerData?.firstName || sellerData?.shopName || "Seller";
+            } else {
+                welcomeName = sellerData?.shopName || convertuser?.fullname || "Seller";
+            }
+
+            const profilePicture = convertuser?.picture || "https://via.placeholder.com/50?text=U";
+
+            currentuser.innerHTML = `
+                <div class="d-flex align-items-center gap-2">
+                    <div>
+                        <img class="rounded-5" src="${profilePicture}" alt="Profile Picture" width="50" height="50">
+                    </div>
+                    <div>
+                        <p class="fw-bold" style="font-weight:600 !important">Profile</p>
+                    </div>
+                </div>
+            `;
+
+            greetings.innerHTML = `WELCOME, ${welcomeName}`;
+        };
+
+        const storedSellerData = localStorage.getItem("sellerData");
+        const initialSellerData = storedSellerData ? JSON.parse(storedSellerData) : null;
+        updateUserHeader(initialSellerData);
+
+        console.log(auth.currentUser);
+
+        // SHOW PRODUCT FORM
+        document.getElementById("addProduct")
+            .addEventListener("click", () => {
+
+                productForm.innerHTML = `
+
+                <div class="d-flex flex-column gap-2 ">
+
+                    <input required id="productImage"type="text"placeholder="Product Image URL"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;" >
+                 
+                    <input required  id="productName" type="text"placeholder="Product Name"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                   
+                    <input required   id="productPrice"type="text" placeholder="Product Price"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+
+                    <input required id="productQuantity"type="number"placeholder="Product Quantity"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+
+                   
+                    <select required class="rouned-2"  name="" id="productCategory"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                        <option value="">Select Category</option>
+                         <option value="beauty">beuty</option>
+                          <option value="furniture">furniture</option>
+                           <option value="fragrances">fragrances</option>
+                           <option value="groceries">groceries</option>
+                           <option value="phone">phone</option>
+                           <option value="laptop">laptop</option>
+                    </select>
+
+                    <textarea required  id="productDescription"placeholder="Product Description" style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;"></textarea  >
+
+                    <button  id="saveProduct" style="background-color: black; color: white; border: none !important; padding: 5px 11px !important; max-width: 200px; border-radius: 5px;"> Save Product</button>
+
+                </div>
+            `;
+
+                // SAVE PRODUCT
+                document.getElementById("saveProduct").addEventListener("click", () => {
+                    // GET INPUT VALUES
+                    const imageValue = productImage.value.trim();
+                    const nameValue = productName.value.trim();
+                    const priceValue = productPrice.value.trim();
+                    const quantityValue = productQuantity.value.trim();
+                    const categoryValue = productCategory.value.trim();
+                    const descriptionValue = productDescription.value.trim();
+
+                    // VALIDATION
+                    if (
+                        imageValue === "" ||
+                        nameValue === "" ||
+                        priceValue === "" ||
+                        quantityValue === "" ||
+                        categoryValue === "" ||
+                        descriptionValue === ""
+                    ) {
+                        alert("Please fill all product details");
+                        return;
+                    }
+
+
+                    const dbRef = ref(db, `/products/${prodIndex}`);
+                    const sellerData = localStorage.getItem("sellerData") ? JSON.parse(localStorage.getItem("sellerData")) : {};
+                    console.log("sellerData from localStorage:", sellerData);
+                    console.log("sellerData.shopName:", sellerData.shopName);
+                    
+                    let productData = {
+
+                        productImage: productImage.value,
+                        productName: productName.value,
+                        productPrice: productPrice.value,
+                        productQuantity: productQuantity.value,
+                        productCategory: productCategory.value,
+                        productDescription: productDescription.value,
+                        id: auth.currentUser.uid,
+                        email: auth.currentUser.email,
+                        name: auth.currentUser.displayName,
+                        shopName: sellerData.shopName || auth.currentUser.displayName,
+                        role: "seller"
+                    };
+                    
+                    console.log("productData being saved:", productData);
+
+
+                    // SAVE TO DATABASE
+                    set(dbRef, productData)
+                        .then(() => {
+
+                            // SUCCESS MESSAGE
+                            const alertMe = document.getElementById("messageAlert");
+
+                            alertMe.style.display = "block";
+
+                            alertMe.innerHTML = `
+                            <div class="alert alert-success text-center">
+                                Product Saved Successfully!
+                            </div>
+                        `;
+
+
+                            setTimeout(() => {
+                                alertMe.innerHTML = "";
+                            }, 3000);
+
+                            // COLLAPSE / REMOVE FORM
+                            productForm.innerHTML = "";
+
+                        })
+
+                        .catch((error) => {
+                            console.log(error);
+                            alert("Error saving product");
+                        });
+
+
+
+                });
+            });
+
+
+
+
+        //reading from the database
+
+
+        const dbRef = ref(db, "/products");
+
+        onValue(dbRef, (snapshot) => {
+
+            const data = snapshot.val();
+
+            console.log(data);
+
+
+            if (!data) {
+                prodIndex = 0;
+                productList.innerHTML = `
+                    <h3>No products yet</h3>
+                `;
+            } else {
+                prodIndex = data.length;
+                productList.innerHTML = "";
+                data.map((item, idx) => {
+                    if (!item) return;
+                    if (auth.currentUser && auth.currentUser.email == item.email) {
+
+                        productList.innerHTML += `
+
+                        <div class="card" style="width: 250px" data-idx="${idx}">
+                            <img src="${item.productImage}" class="card-img-top" alt="..." height="250"  style="object-fit: cover;">
+                            <div class="card-body p-2" style="display:flex !important; flex-direction:column !important; ">
+                                <h5 class="card-title">${item.productName}</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p>₦${item.productPrice}</p>
+                                    <p>Qty:${item.productQuantity}</p>
+                                </div>
+                                <p class="card-text" style="flex: 1 !important">${item.productDescription}</p>
+                                <div>
+                                    <a href="#" class="btn px-2 py-1 btn-primary editBtn" data-idx="${idx}">Edit</a>
+                                    <a href="#" class="btn px-2 py-1 btn-danger deleteBtn" data-idx="${idx}">Delete</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    `;
+                    }
+
+                });
+
+            }
+
+        });
+
+        // EVENT DELEGATION FOR EDIT AND DELETE BUTTONS
+        productList.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            if (e.target.classList.contains("editBtn")) {
+                const idx = e.target.getAttribute("data-idx");
+                const dbRef = ref(db, "/products");
+
+                onValue(dbRef, (snapshot) => {
+                    const data = snapshot.val();
+                    
+                    // Handle both array and object formats
+                    let item = null;
+                    if (data) {
+                        if (Array.isArray(data)) {
+                            item = data[idx];
+                        } else {
+                            item = data[idx];
+                        }
+                    }
+                    
+                    if (item) {
+                        productForm.innerHTML = `
+
+                <div class="d-flex flex-column gap-2 ">
+
+                    <input required id="productImage"type="text" value="${item.productImage}" placeholder="Product Image URL"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;" >
+                 
+                    <input required  id="productName" type="text" value="${item.productName}" placeholder="Product Name"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                   
+                    <input required   id="productPrice"type="text" value="${item.productPrice}" placeholder="Product Price"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+
+                    <input required id="productQuantity"type="number" value="${item.productQuantity}" placeholder="Product Quantity"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+
+                   
+                    <select required class="rouned-2"  name="" id="productCategory"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                        <option value="">Select Category</option>
+                         <option value="beauty" ${item.productCategory === 'beauty' ? 'selected' : ''}>beauty</option>
+                          <option value="furniture" ${item.productCategory === 'furniture' ? 'selected' : ''}>furniture</option>
+                           <option value="fragrances" ${item.productCategory === 'fragrances' ? 'selected' : ''}>fragrances</option>
+                           <option value="groceries" ${item.productCategory === 'groceries' ? 'selected' : ''}>groceries</option>
+                           <option value="phone" ${item.productCategory === 'phone' ? 'selected' : ''}>phone</option>
+                           <option value="laptop" ${item.productCategory === 'laptop' ? 'selected' : ''}>laptop</option>
+                    </select>
+
+                    <textarea required  id="productDescription" placeholder="Product Description" style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">${item.productDescription}</textarea  >
+
+                    <button  id="updateProduct" data-idx="${idx}" style="background-color: #28a745; color: white; border: none !important; padding: 5px 11px !important; max-width: 200px; border-radius: 5px;"> Update Product</button>
+                    <button  id="cancelEdit" style="background-color: #6c757d; color: white; border: none !important; padding: 5px 11px !important; max-width: 200px; border-radius: 5px;"> Cancel</button>
+
+                </div>
+            `;
+
+                        // UPDATE PRODUCT
+                        document.getElementById("updateProduct").addEventListener("click", async () => {
+                            const imageValue = productImage.value.trim();
+                            const nameValue = productName.value.trim();
+                            const priceValue = productPrice.value.trim();
+                            const quantityValue = productQuantity.value.trim();
+                            const categoryValue = productCategory.value.trim();
+                            const descriptionValue = productDescription.value.trim();
+
+                            if (
+                                imageValue === "" ||
+                                nameValue === "" ||
+                                priceValue === "" ||
+                                quantityValue === "" ||
+                                categoryValue === "" ||
+                                descriptionValue === ""
+                            ) {
+                                alert("Please fill all product details");
+                                return;
+                            }
+
+                            const updateRef = ref(db, `/products/${idx}`);
+                            const updatedProductData = {
+                                productImage: imageValue,
+                                productName: nameValue,
+                                productPrice: priceValue,
+                                productQuantity: quantityValue,
+                                productCategory: categoryValue,
+                                productDescription: descriptionValue,
+                                id: auth.currentUser.uid,
+                                email: auth.currentUser.email,
+                                name: auth.currentUser.displayName,
+                                role: "seller"
+                            }; 
+
+                            set(updateRef, updatedProductData)
+                                .then(() => {
+                                    const alertMe = document.getElementById("messageAlert");
+                                    alertMe.style.display = "block";
+                                    alertMe.innerHTML = `
+                            <div class="alert alert-success text-center">
+                                Product Updated Successfully!
+                            </div>
+                        `;
+                                    setTimeout(() => {
+                                        alertMe.innerHTML = "";
+                                    }, 3000);
+                                    productForm.innerHTML = "";
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                    alert("Error updating product");
+                                });
+                        });
+
+                        // CANCEL EDIT
+                        document.getElementById("cancelEdit").addEventListener("click", () => {
+                            productForm.innerHTML = "";
+                        });
+                    }
+                }, { onlyOnce: true });
+            }
+
+            if (e.target.classList.contains("deleteBtn")) {
+                const idx = e.target.getAttribute("data-idx");
+                if (confirm("Are you sure you want to delete this product?")) {
+                    const deleteRef = ref(db, `/products/${idx}`);
+                    set(deleteRef, null)
+                        .then(() => {
+                            const alertMe = document.getElementById("messageAlert");
+                            alertMe.style.display = "block";
+                            alertMe.innerHTML = `
+                        <div class="alert alert-danger text-center">
+                            Product Deleted Successfully!
+                        </div>
+                    `;
+                            setTimeout(() => {
+                                alertMe.innerHTML = "";
+                            }, 3000);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                            alert("Error deleting product");
+                        });
+                }
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

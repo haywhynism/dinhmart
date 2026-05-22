@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - dínhmart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body style="background-color: #F9F9FA;">
+
+    <header class=" py-md-3"
+        style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5; position: fixed; top: 0; right: 0; left: 0; z-index: 1;">
+        <div class="d-flex justify-content-around align-items-center">
+            <div class="logoImg">
+                <svg width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- DM Icon -->
+                    <g transform="translate(10,15)">
+                        <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black" stroke-width="5"
+                            fill="none" stroke-linejoin="round" />
+                        <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                        font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                    <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                    <circle cx="215" cy="62" r="2.5" fill="black" />
+                </svg>
+            </div>
+
+            <div class="d-none d-md-flex align-items-center gap-5 ">
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">About</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">Contact</a>
+            </div>
+
+
+        </div>
+    </header>
+
+
+
+
+
+    <div class="login-container  d-block d-md-block mx-auto rounded-2 p-3 "
+        style="background-color: white; width: 450px; border: 1px #E5E5E5 solid !important; margin-top: 180px !important; position: fixed; top: 0 ; right: 0 ; left: 0; z-index: 1;">
+        <div class="login-header">
+            <h1 class="fw-bold fs-4 mb-1">Admin Login</h1>
+            <p class="fw-lighter mb-4">Access the dínhmart admin dashboard</p>
+        </div>
+
+        <div id="messageAlert"></div>
+
+        <form id="loginForm" class="py-3">
+            <div class="form-group">
+                <label class="mb-2" for="email" style="font-weight: 500;">Email Address</label>
+                <input class="form-control mb-3 rounded-2" type="email" id="email" placeholder="Enter your email"
+                    required
+                    style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+            </div>
+
+            <div class="form-group">
+                <label class="mb-2" for="password" style="font-weight: 500;">Password</label>
+                <input class="form-control mb-3 rounded-2" type="password" id="password"
+                    placeholder="Enter your password" required
+                    style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+            </div>
+
+            <div class="mb-2" id="recaptcha-container"></div>
+
+            <button type="submit" id="loginForm" class="login-btn btn btn-dark w-100 border-0"
+                style="padding: 8px 12px !important">
+                <span class="login-text ">Login to Admin Dashboard</span>
+                <span class="loading">
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Logging in...
+                </span>
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a class="text-dark" href="/">← Back to Home</a>
+        </div>
+    </div>
+
+
+    <footer class=" px-lg-3 mx-auto text-black mt-5">
+        <div
+            class="footer-group px-3 px-md-5 py-4 pt-md-5  d-md-flex justify-content-md-center  justify-content-lg-between  gap-md-5 pt-4 ">
+
+            <div class="footer-details px-xl-5 d-md-flex gap-5  ">
+
+                <div class="vite mb-5 me-md-4 text-black">
+                    <div class="text-light mb-4"
+                        style="color: #827989 !important; font-family: monospace; font-size: 12px !important;"><svg
+                            width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- DM Icon -->
+                            <g transform="translate(10,15)">
+                                <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black"
+                                    stroke-width="5" fill="none" stroke-linejoin="round" />
+                                <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                                font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                            <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                            <circle cx="215" cy="62" r="2.5" fill="black" />
+                        </svg></div>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <p class="text-decoration-none text-black" href="">Your trusted multi-vendor marketplace for
+                            quality products from sellers worldwide.</p>
+                    </div>
+                </div>
+
+                <div class="resources mb-5 me-md-4 ">
+                    <p class="text-light mb-4"
+                        style="color: #827989 !important; font-family: monospace; font-size: 12px !important;">ABOUT US
+                    </p>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <a class="text-decoration-none text-black" href="">How it works</a>
+                        <a class="text-decoration-none text-black" href="">Become a Seller</a>
+                        <a class="text-decoration-none text-black" href="">Contact</a>
+                    </div>
+                </div>
+
+                <div class="versions mb-5 me-md-4 text-black">
+                    <p class="ayo mb-4"
+                        style="color: #78717F !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+                        SUPPORT</p>
+                    <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                        <a class="text-decoration-none text-black" href="">Help Center</a>
+                        <a class="text-decoration-none text-black" href="">Terms & Conditions</a>
+                        <a class="text-decoration-none text-black" href="">Shipping information</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="footer-social-accounts mb-5 px-xl-5 text-black ">
+                <p class="text-light mb-4"
+                    style="color: #827989 !important; font-family: monospace; font-size: 12px !important; font-weight: lighter; ">
+                    SOCIAL</p>
+                <div class="d-grid gap-3" style="font-weight: 200 !important;">
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3 " href="">
+                        <img height="22" src="vite/download (3).svg" alt="">
+                        <span>Github</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (6).svg" alt="">
+                        <span>Discord</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (7).svg" alt="">
+                        <span>Bluesky</span>
+                    </a>
+                    <a class="text-decoration-none text-black d-flex align-items-center gap-3" href="">
+                        <img height="22" src="vite/download (8).svg" alt="">
+                        <span>X.com</span>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="px-3 px-md-5 py-3 " style="background-color: #F9F9FA;">
+            <p class=" px-md-4 text-white text-center" style="color: #827989 !important; font-size: 14px;">&#169 2025
+                DínMart.
+                All right Reserved</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtme28j9rc5NIbv7mHOSncV9W_6NlGWp4",
+            authDomain: "chicmart-9c9f1.firebaseapp.com",
+            databaseURL: "https://chicmart-9c9f1-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "chicmart-9c9f1",
+            storageBucket: "chicmart-9c9f1.firebasestorage.app",
+            messagingSenderId: "860959606353",
+            appId: "1:860959606353:web:0744c14db06445b109da70"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        // Check if already logged in
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email === "haywhynism@gmail.com") {
+                window.location.href = "/admin.html";
+            }
+        });
+
+        // Admin email constant
+        const ADMIN_EMAIL = "haywhynism@gmail.com";
+
+        document.getElementById("loginForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const loginBtn = document.querySelector(".login-btn");
+            const loginText = document.querySelector(".login-text");
+            const loading = document.querySelector(".loading");
+
+            // Check if email is admin email
+            if (email !== ADMIN_EMAIL) {
+                showAlert("Only the admin email can access this dashboard", "danger");
+                return;
+            }
+
+            // Show loading state
+            loginBtn.disabled = true;
+            loginText.style.display = "none";
+            loading.style.display = "inline";
+
+            // Sign in with Firebase
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+
+                    // Verify admin email
+                    if (user.email === ADMIN_EMAIL) {
+                        showAlert("Login successful! Redirecting to admin dashboard...", "success");
+                        setTimeout(() => {
+                            window.location.href = "/admin.html";
+                        }, 1500);
+                    } else {
+                        showAlert("Unauthorized: This email is not an admin", "danger");
+                        loginBtn.disabled = false;
+                        loginText.style.display = "inline";
+                        loading.style.display = "none";
+                    }
+                })
+                .catch((error) => {
+                    loginBtn.disabled = false;
+                    loginText.style.display = "inline";
+                    loading.style.display = "none";
+
+                    let errorMessage = "Login failed";
+                    if (error.code === "auth/user-not-found") {
+                        errorMessage = "User not found";
+                    } else if (error.code === "auth/wrong-password") {
+                        errorMessage = "Incorrect password";
+                    } else if (error.code === "auth/invalid-email") {
+                        errorMessage = "Invalid email format";
+                    } else {
+                        errorMessage = error.message;
+                    }
+
+                    showAlert(errorMessage, "danger");
+                    console.log(error);
+                });
+        });
+
+        function showAlert(message, type) {
+            const alertMe = document.getElementById("messageAlert");
+            alertMe.innerHTML = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        `;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

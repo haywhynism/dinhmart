@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - dínhmart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .alert {
+            margin-bottom: 20px;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 14px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="background-color: #F9F9FA;">
+
+    <header class=" py-3" style="background-color: white; box-shadow: 1px 1px 3px 1px #e5e5e5">
+        <div class="d-flex justify-content-around align-items-center">
+            <div class="logoImg">
+                <svg width="130" viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- DM Icon -->
+                    <g transform="translate(10,15)">
+                        <path d="M10 10V60H32C48 60 60 48 60 35C60 22 48 10 32 10H10Z" stroke="black" stroke-width="5"
+                            fill="none" stroke-linejoin="round" />
+                        <path d="M48 60V10L60 38L72 10V60" stroke="black" stroke-width="5" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </g> <text x="105" y="50" font-family="Helvetica, Arial, sans-serif" font-size="22"
+                        font-weight="900" letter-spacing="0.8" fill="black"> dínhmart </text>
+
+                    <line x1="105" y1="62" x2="210" y2="62" stroke="black" stroke-width="3" />
+                    <circle cx="215" cy="62" r="2.5" fill="black" />
+                </svg>
+            </div>
+
+            <div class=" d-md-flex gap-5 ">
+                <a href="index.html" class="text-decoration-none text-dark" style="font-weight: 500;">Home</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">About</a>
+                <a href="" class="text-decoration-none text-dark" style="font-weight: 500;">Contact</a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <div class="login-container  d-block d-md-block mx-auto rounded-2 p-3 "  style="background-color: white; width: 450px; border: 1px #E5E5E5 solid !important; margin-top: 80px !important;">
+        <div class="login-header">
+            <h1 class="fw-bold fs-4 mb-1">Admin Login</h1>
+            <p class="fw-lighter mb-4">Access the dínhmart admin dashboard</p>
+        </div>
+
+        <div id="messageAlert"></div>
+
+        <form id="loginForm" class="py-3">
+            <div class="form-group">
+                <label class="mb-2" for="email" style="font-weight: 500;">Email Address</label>
+                <input class="form-control mb-3 rounded-2" type="email" id="email" placeholder="Enter your email" required style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+            </div>
+
+            <div class="form-group">
+                <label class="mb-2" for="password" style="font-weight: 500;">Password</label>
+                <input class="form-control mb-3 rounded-2" type="password" id="password" placeholder="Enter your password" required style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5;">
+            </div>
+
+            <div class="mb-2" id="recaptcha-container"></div>
+
+            <button type="submit" id="loginForm" class="login-btn btn btn-dark w-100 border-0" style="padding: 8px 12px !important">
+                <span class="login-text " >Login to Admin Dashboard</span>
+                <span class="loading">
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Logging in...
+                </span>
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="/">← Back to Home</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtme28j9rc5NIbv7mHOSncV9W_6NlGWp4",
+            authDomain: "chicmart-9c9f1.firebaseapp.com",
+            databaseURL: "https://chicmart-9c9f1-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "chicmart-9c9f1",
+            storageBucket: "chicmart-9c9f1.firebasestorage.app",
+            messagingSenderId: "860959606353",
+            appId: "1:860959606353:web:0744c14db06445b109da70"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        // Check if already logged in
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email === "haywhynism@gmail.com") {
+                window.location.href = "/admin.html";
+            }
+        });
+
+        // Admin email constant
+        const ADMIN_EMAIL = "haywhynism@gmail.com";
+
+        document.getElementById("loginForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const loginBtn = document.querySelector(".login-btn");
+            const loginText = document.querySelector(".login-text");
+            const loading = document.querySelector(".loading");
+
+            // Check if email is admin email
+            if (email !== ADMIN_EMAIL) {
+                showAlert("Only the admin email can access this dashboard", "danger");
+                return;
+            }
+
+            // Show loading state
+            loginBtn.disabled = true;
+            loginText.style.display = "none";
+            loading.style.display = "inline";
+
+            // Sign in with Firebase
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+
+                    // Verify admin email
+                    if (user.email === ADMIN_EMAIL) {
+                        showAlert("Login successful! Redirecting to admin dashboard...", "success");
+                        setTimeout(() => {
+                            window.location.href = "/admin.html";
+                        }, 1500);
+                    } else {
+                        showAlert("Unauthorized: This email is not an admin", "danger");
+                        loginBtn.disabled = false;
+                        loginText.style.display = "inline";
+                        loading.style.display = "none";
+                    }
+                })
+                .catch((error) => {
+                    loginBtn.disabled = false;
+                    loginText.style.display = "inline";
+                    loading.style.display = "none";
+
+                    let errorMessage = "Login failed";
+                    if (error.code === "auth/user-not-found") {
+                        errorMessage = "User not found";
+                    } else if (error.code === "auth/wrong-password") {
+                        errorMessage = "Incorrect password";
+                    } else if (error.code === "auth/invalid-email") {
+                        errorMessage = "Invalid email format";
+                    } else {
+                        errorMessage = error.message;
+                    }
+
+                    showAlert(errorMessage, "danger");
+                    console.log(error);
+                });
+        });
+
+        function showAlert(message, type) {
+            const alertMe = document.getElementById("messageAlert");
+            alertMe.innerHTML = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        `;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,341 @@
+* {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.signInButton:hover {
+    background-color: rgb(235, 233, 233);
+
+}
+
+.latest-code2 .nav-link.active {
+    background-color: black;
+    color: white !important;
+}
+
+#cartSidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background: white;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1050 !important;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 5px 5px;
+}
+
+#cartSidebar.active {
+    transform: translateX(0);
+}
+
+.cart-header {
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    width: 100%;
+}
+
+.cart-header h3 {
+    font-weight: 600;
+}
+
+.close-cart {
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.cart-item-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+.qty-control {
+    display: flex;
+    align-items: center !important;
+
+}
+
+.qty-control button {
+    width: 18px;
+    height: 18px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-control input {
+    width: 30px;
+    height: 28px;
+    font-weight: 600;
+}
+
+.remove-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 12px !important;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 70px !important;
+}
+
+.remove-btn:hover {
+    background: #ff5252;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+}
+
+.cart-footer {
+    border-top: 2px solid #f0f0f0;
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+}
+
+.checkout-btn {
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    opacity: 0.9;
+}
+
+.cart-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1040;
+}
+
+.cart-overlay.active {
+    display: block;
+}
+
+.wellcome-text {
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 600 !important;
+}
+
+
+ .seller-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px !important;
+            margin-bottom: 20px !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .seller-header {
+            background-color: #f8f9fa;
+            padding: 15px !important;
+            border-radius: 8px;
+            margin-bottom: 15px !important;
+            border-left: 4px solid #667eea;
+        }
+
+        .product-item {
+            background-color: #f9f9f9;
+            padding: 12px !important;
+            margin-bottom: 10px !important;
+            border-radius: 6px;
+            border-left: 3px solid #ff6b6b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .delete-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 6px 12px !important;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff5252;
+        }
+
+        .delete-seller-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 8px 16px !important;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .delete-seller-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px !important;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px !important;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+          .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .alert {
+            margin-bottom: 20px;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 14px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+        }
+@media (max-width:450px) and (min-width:310px)  {
+    .logoImg :nth-child(1) {
+        width: 100px !important;
+    }
+    .wellcome-text {
+       font-size: 30px !important;
+       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .des-text{
+        width: 280px;
+       margin: 0 auto !important;
+    }
+}
+
+@media (max-width:2790px) and (min-width:768px)  {
+    .startShop-group {
+        flex-direction: row !important;
+        gap: 20px !important;
+        justify-content: center !important;
+     
+    }
+    .startShop {
+        width: 250px !important;
+    }
+    .signUpAllProducts{
+        width: 250px !important;
+    }
+}
+
+@media (min-width:768px) and (max-width:1116px) {
+    .signInButton{
+        display: none !important;
+    }
+    .wellcome-text {
+        font-family: sans-serif;
+        font-size: 60px !important;
+    }
+}
+
+@media (min-width:992px) and (max-width:1116px) {
+   .car-t{
+    margin-left: 10px !important;
+   }
+   .middle-section{
+    gap: 15px !important;
+   }
+}
+
+@media (min-width:768px) and (max-width:3000px) {
+    .wellcome-text {
+        font-family: sans-serif;
+        font-size: 60px !important;
+        margin-top: 110px !important;
+    }
+}
