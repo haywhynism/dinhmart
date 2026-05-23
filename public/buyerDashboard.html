@@ -214,9 +214,6 @@
 
                 const uid = user.uid;
 
-                console.log(uid);
-
-                // ...
             } else {
                 window.location.href = "/";
             }
@@ -246,16 +243,15 @@
         let getUser = localStorage.getItem("user");
         let convertuser = getUser ? JSON.parse(getUser) : null;
 
-        console.log(auth.currentUser);
         
         if (convertuser) {
             currentuser.innerHTML = `
                 <div class="d-flex align-items-center gap-2">
                     <div>
-                        <img class="rounded-5" src="${convertuser.picture || 'https://via.placeholder.com/50?text=U'}" alt="Profile Picture" width="50" height="50">
+                        <img class="rounded-5" src="${convertuser.picture || 'https://via.placeholder.com/50?text=U'}" alt="" width="50" height="50">
                     </div>
                     <div>
-                        <p class="fw-bold" style="font-weight:600 !important">${convertuser.fullname || 'Buyer'}</p>
+                        <p class="fw-bold mt-3" style="font-weight:600 !important">${convertuser.fullname || 'Buyer'}</p>
                     </div>
                 </div>
             `;
@@ -267,8 +263,6 @@
         onValue(dbRef, async (snapshot) => {
 
             const data = snapshot.val();
-
-            console.log(data);
 
             let productsArray = [];
             if (data && typeof data === "object") {
@@ -591,9 +585,6 @@
                 totalAmount += product.productPrice * product.quantity;
             });
 
-            // console.log('Total amount in naira:', totalAmount);
-            // console.log('Total amount in kobo:', totalAmount * 100);
-
             // Initialize Paystack
 
             const paymentReference = '' + Math.floor((Math.random() * 1000000000) + 1);
@@ -617,7 +608,7 @@
                 handler.openIframe();
 
             } catch (error) {
-                console.error('❌ Error opening payment modal:', error);
+                
                 alert('Error opening payment modal: ' + error.message);
             }
         });
@@ -642,7 +633,7 @@
 
 
 
-                        // Update in Firebase
+                       
                         const productRef = ref(db, `/products/${productIndex}`);
                         update(productRef, { productQuantity: newQuantity })
                             .then(() => {
@@ -663,13 +654,13 @@
                 localStorage.setItem("cart", JSON.stringify([]));
 
 
-                // Reset cart count
+            
                 updateCartCount();
 
                 // Refresh cart display to show empty cart
                 displayCartItems();
 
-                // Close cart sidebar
+            
                 document.getElementById("cartSidebar").classList.remove("active");
                 document.getElementById("cartOverlay").classList.remove("active");
 
@@ -691,14 +682,14 @@
             }
         }
 
-        // VERIFY PAYMENT (fallback when onSuccess doesn't fire)
+        
         function verifyPayment(reference, cartItems) {
 
-            // Show a dialog asking user to confirm if payment succeeded
+     
             const confirmed = confirm('Did your payment go through successfully? Click OK if yes, Cancel if no.');
 
             if (confirmed) {
-                console.log('User confirmed payment success');
+                
                 processPayment({ reference: reference }, cartItems);
             } else {
 
@@ -706,7 +697,7 @@
             }
         }
 
-        // Initialize cart count on page load
+      
         updateCartCount();
 
     </script>
@@ -715,7 +706,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <!-- Paystack Script -->
+   
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
 </body>
