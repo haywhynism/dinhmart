@@ -210,15 +210,16 @@ header > .d-flex {
     flex: 0 0 auto;
 }
 
-.buyer-dashboard .product-card-footer p {
+.product-card-footer p {
     flex: 1 1 auto;
     min-width: 0;
     overflow-wrap: anywhere;
 }
 
-.buyer-dashboard .product-card-footer .btn {
+.product-card-footer .btn {
     flex: 0 0 auto;
     min-width: 58px;
+    white-space: nowrap;
 }
 
 .signInButton:hover {
