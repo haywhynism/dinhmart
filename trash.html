@@ -406,19 +406,9 @@
                     <h3>No products yet</h3>
                 `;
             } else {
-                const productEntries = Array.isArray(data)
-                    ? data.map((item, idx) => [idx, item])
-                    : Object.entries(data);
-
-                prodIndex = Array.isArray(data)
-                    ? data.length
-                    : productEntries.reduce((nextIndex, [key]) => {
-                        const numericKey = Number(key);
-                        return Number.isFinite(numericKey) ? Math.max(nextIndex, numericKey + 1) : nextIndex;
-                    }, productEntries.length);
-
+                prodIndex = data.length;
                 productList.innerHTML = "";
-                productEntries.forEach(([idx, item]) => {
+                data.map((item, idx) => {
                     if (!item) return;
                     if (auth.currentUser && auth.currentUser.email == item.email) {
 
