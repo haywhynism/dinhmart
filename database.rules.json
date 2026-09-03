@@ -1,0 +1,27 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "products": {
+      ".read": true,
+      "$productId": {
+        ".write": "auth != null && ((!data.exists() && newData.exists() && newData.child('id').val() === auth.uid && newData.child('role').val() === 'seller') || (data.exists() && data.child('id').val() === auth.uid && (!newData.exists() || (newData.child('id').val() === data.child('id').val() && newData.child('role').val() === 'seller'))) || auth.token.email === 'haywhynism@gmail.com')",
+        ".validate": "!newData.exists() || (newData.hasChildren(['id', 'email', 'productImage', 'productName', 'productPrice', 'productQuantity', 'productCategory', 'productDescription', 'role']) && newData.child('id').isString() && newData.child('email').isString() && newData.child('productImage').isString() && newData.child('productName').isString() && newData.child('productPrice').isString() && newData.child('productQuantity').isString() && newData.child('productCategory').isString() && newData.child('productDescription').isString() && newData.child('role').val() === 'seller')"
+      }
+    },
+    "buyers": {
+      "$buyerId": {
+        ".read": "auth != null && (data.child('uid').val() === auth.uid || auth.token.email === 'haywhynism@gmail.com')",
+        ".write": "auth != null && (auth.token.email === 'haywhynism@gmail.com' || (!data.exists() && newData.child('uid').val() === auth.uid && newData.child('role').val() === 'buyer') || (data.exists() && data.child('uid').val() === auth.uid && newData.child('uid').val() === data.child('uid').val() && newData.child('role').val() === 'buyer'))",
+        ".validate": "!newData.exists() || (newData.hasChildren(['uid', 'email', 'role']) && newData.child('uid').isString() && newData.child('email').isString() && newData.child('role').val() === 'buyer')"
+      }
+    },
+    "sellers": {
+      "$sellerId": {
+        ".read": true,
+        ".write": "auth != null && (auth.token.email === 'haywhynism@gmail.com' || (!data.exists() && newData.child('uid').val() === auth.uid && newData.child('role').val() === 'seller') || (data.exists() && data.child('uid').val() === auth.uid && newData.child('uid').val() === data.child('uid').val() && newData.child('role').val() === 'seller'))",
+        ".validate": "!newData.exists() || (newData.hasChildren(['uid', 'email', 'role']) && newData.child('uid').isString() && newData.child('email').isString() && newData.child('role').val() === 'seller')"
+      }
+    }
+  }
+}

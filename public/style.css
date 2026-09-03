@@ -384,19 +384,15 @@ header > .d-flex {
         }
 
         .seller-header {
-            background-color: #f8f9fa;
             padding: 15px !important;
             border-radius: 8px;
             margin-bottom: 15px !important;
-            border-left: 4px solid #667eea;
         }
 
         .product-item {
-            background-color: #f9f9f9;
             padding: 12px !important;
             margin-bottom: 10px !important;
             border-radius: 6px;
-            border-left: 3px solid #ff6b6b;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -459,7 +455,7 @@ header > .d-flex {
         .stat-number {
             font-size: 32px;
             font-weight: bold;
-            color: #667eea;
+            color: black;
         }
 
         .stat-label {
@@ -489,7 +485,7 @@ header > .d-flex {
         }
 
         .back-link a {
-            color: #667eea;
+            color: black;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;

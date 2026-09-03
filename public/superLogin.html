@@ -196,7 +196,7 @@
         // Check if already logged in
         onAuthStateChanged(auth, (user) => {
             if (user && user.email === "haywhynism@gmail.com") {
-                window.location.href = "/admin.html";
+                window.location.href = "/super.html";
             }
         });
 
@@ -218,17 +218,16 @@
                 return;
             }
 
-            // Show loading state
             loginBtn.disabled = true;
             loginText.style.display = "none";
             loading.style.display = "inline";
 
-            // Sign in with Firebase
+          
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
 
-                    // Verify admin email
+                   
                     if (user.email === ADMIN_EMAIL) {
                         showAlert("Login successful! Redirecting to admin dashboard...", "success");
                         setTimeout(() => {
