@@ -1,3 +1,4 @@
+*boostrap
 # Logs
 logs
 *.log
@@ -68,5 +69,5 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 
-.gitignore
+
 .database.rules.json
