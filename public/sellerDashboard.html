@@ -164,6 +164,7 @@
     </footer>
     <script type="module">
         import User from "/User.js";
+        import { escapeAttribute, escapeHtml, safeImageUrl } from "/sanitize.js";
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
         import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
@@ -185,6 +186,8 @@
         const auth = getAuth();
 
         const db = getDatabase(app);
+
+        const containsMarkup = (value) => /[<>]/.test(value);
 
         let prodIndex = 0;
 
@@ -252,7 +255,7 @@
             currentuser.innerHTML = `
                 <div class="d-flex align-items-center gap-2">
                     <div>
-                        <img class="rounded-5" src="${profilePicture}" alt="" width="50" height="50">
+                        <img class="rounded-5" src="${safeImageUrl(profilePicture)}" alt="" width="50" height="50">
                     </div>
                     <div>
                         <p class="fw-bold mt-3" style="font-weight:600 !important">Profile</p>
@@ -260,7 +263,7 @@
                 </div>
             `;
 
-            greetings.innerHTML = `WELCOME, ${welcomeName}`;
+            greetings.textContent = `WELCOME, ${welcomeName}`;
         };
 
         const storedSellerData = localStorage.getItem("sellerData");
@@ -323,6 +326,11 @@
                         descriptionValue === ""
                     ) {
                         alert("Please fill all product details");
+                        return;
+                    }
+
+                    if ([imageValue, nameValue, priceValue, quantityValue, categoryValue, descriptionValue].some(containsMarkup)) {
+                        alert("HTML tags are not allowed in product details. Use plain text only.");
                         return;
                     }
 
@@ -425,14 +433,14 @@
                         productList.innerHTML += `
 
                         <div class="card" style="width: 250px" data-idx="${idx}">
-                            <img src="${item.productImage}" class="card-img-top" alt="..." height="250"  style="object-fit: cover;">
+                            <img src="${safeImageUrl(item.productImage)}" class="card-img-top" alt="${escapeAttribute(item.productName)}" height="250"  style="object-fit: cover;">
                             <div class="card-body p-2" style="display:flex !important; flex-direction:column !important; ">
-                                <h5 class="card-title">${item.productName}</h5>
+                                <h5 class="card-title">${escapeHtml(item.productName)}</h5>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <p>₦${item.productPrice}</p>
-                                    <p>Qty:${item.productQuantity}</p>
+                                    <p>₦${escapeHtml(item.productPrice)}</p>
+                                    <p>Qty:${escapeHtml(item.productQuantity)}</p>
                                 </div>
-                                <p class="card-text" style="flex: 1 !important">${item.productDescription}</p>
+                                <p class="card-text" style="flex: 1 !important">${escapeHtml(item.productDescription)}</p>
                                 <div>
                                     <a href="#" class="btn px-2 py-1 btn-primary editBtn" data-idx="${idx}">Edit</a>
                                     <a href="#" class="btn px-2 py-1 btn-danger deleteBtn" data-idx="${idx}">Delete</a>
@@ -474,13 +482,13 @@
 
                 <div class="d-flex flex-column gap-2 ">
 
-                    <input required id="productImage"type="text" value="${item.productImage}" placeholder="Product Image URL"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;" >
+                    <input required id="productImage"type="text" value="${escapeAttribute(item.productImage)}" placeholder="Product Image URL"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;" >
                  
-                    <input required  id="productName" type="text" value="${item.productName}" placeholder="Product Name"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                    <input required  id="productName" type="text" value="${escapeAttribute(item.productName)}" placeholder="Product Name"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
                    
-                    <input required   id="productPrice"type="text" value="${item.productPrice}" placeholder="Product Price"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                    <input required   id="productPrice"type="text" value="${escapeAttribute(item.productPrice)}" placeholder="Product Price"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
 
-                    <input required id="productQuantity"type="number" value="${item.productQuantity}" placeholder="Product Quantity"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
+                    <input required id="productQuantity"type="number" value="${escapeAttribute(item.productQuantity)}" placeholder="Product Quantity"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
 
                    
                     <select required class="rouned-2"  name="" id="productCategory"  style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">
@@ -493,7 +501,7 @@
                            <option value="laptop" ${item.productCategory === 'laptop' ? 'selected' : ''}>laptop</option>
                     </select>
 
-                    <textarea required  id="productDescription" placeholder="Product Description" style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">${item.productDescription}</textarea  >
+                    <textarea required  id="productDescription" placeholder="Product Description" style="border: 1px solid #E5E5E5; padding: 8px 12px !important; background-color: #F3F3F5; max-width: 200px; border-radius: 5px;">${escapeHtml(item.productDescription)}</textarea  >
 
                     <button  id="updateProduct" data-idx="${idx}" style="background-color: #28a745; color: white; border: none !important; padding: 5px 11px !important; max-width: 200px; border-radius: 5px;"> Update Product</button>
                     <button  id="cancelEdit" style="background-color: #6c757d; color: white; border: none !important; padding: 5px 11px !important; max-width: 200px; border-radius: 5px;"> Cancel</button>
@@ -509,6 +517,11 @@
                             const quantityValue = productQuantity.value.trim();
                             const categoryValue = productCategory.value.trim();
                             const descriptionValue = productDescription.value.trim();
+
+                            if ([imageValue, nameValue, priceValue, quantityValue, categoryValue, descriptionValue].some(containsMarkup)) {
+                                alert("HTML tags are not allowed in product details. Use plain text only.");
+                                return;
+                            }
 
                             if (
                                 imageValue === "" ||

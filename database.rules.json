@@ -6,7 +6,7 @@
       ".read": true,
       "$productId": {
         ".write": "auth != null && ((!data.exists() && newData.exists() && newData.child('id').val() === auth.uid && newData.child('role').val() === 'seller') || (data.exists() && data.child('id').val() === auth.uid && (!newData.exists() || (newData.child('id').val() === data.child('id').val() && newData.child('role').val() === 'seller'))) || auth.token.email === 'haywhynism@gmail.com')",
-        ".validate": "!newData.exists() || (newData.hasChildren(['id', 'email', 'productImage', 'productName', 'productPrice', 'productQuantity', 'productCategory', 'productDescription', 'role']) && newData.child('id').isString() && newData.child('email').isString() && newData.child('productImage').isString() && newData.child('productName').isString() && newData.child('productPrice').isString() && newData.child('productQuantity').isString() && newData.child('productCategory').isString() && newData.child('productDescription').isString() && newData.child('role').val() === 'seller')"
+        ".validate": "!newData.exists() || (newData.hasChildren(['id', 'email', 'productImage', 'productName', 'productPrice', 'productQuantity', 'productCategory', 'productDescription', 'role']) && newData.child('id').isString() && newData.child('email').isString() && newData.child('productImage').isString() && newData.child('productName').isString() && newData.child('productPrice').isString() && newData.child('productQuantity').isString() && newData.child('productCategory').isString() && newData.child('productDescription').isString() && !newData.child('productName').val().matches(/.*[<>].*/) && !newData.child('productDescription').val().matches(/.*[<>].*/) && newData.child('role').val() === 'seller')"
       }
     },
     "buyers": {

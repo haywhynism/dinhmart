@@ -157,6 +157,7 @@
     </footer>
 
     <script type="module">
+        import { escapeAttribute, escapeHtml } from "/sanitize.js";
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
         import { getDatabase, ref, onValue, remove, set } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
@@ -259,10 +260,10 @@
                     <div class="seller-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <h4 style="margin: 0; color: #333;">${seller.name}</h4>
-                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">${email}</p>
+                                <h4 style="margin: 0; color: #333;">${escapeHtml(seller.name)}</h4>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">${escapeHtml(email)}</p>
                             </div>
-                            <button class="delete-seller-btn" onclick="deleteSeller('${email}', '${seller.name}')">
+                            <button class="delete-seller-btn" data-seller-email="${escapeAttribute(email)}" data-seller-name="${escapeAttribute(seller.name)}">
                                 Delete Seller Account
                             </button>
                         </div>
@@ -279,16 +280,16 @@
                         html += `
                         <div class="product-item">
                             <div style="flex: 1;">
-                                <strong>${product.productName}</strong>
+                                <strong>${escapeHtml(product.productName)}</strong>
                                 <p style="margin: 5px 0 0 0; font-size: 12px; color: #666;">
-                                    Price: ₦${product.productPrice} | Qty: ${product.productQuantity}
+                                    Price: ₦${escapeHtml(product.productPrice)} | Qty: ${escapeHtml(product.productQuantity)}
                                 </p>
                                 <p style="margin: 3px 0 0 0; font-size: 11px; color: #999;">
-                                    ${product.productDescription.substring(0, 50)}...
+                                    ${escapeHtml(product.productDescription.substring(0, 50))}...
                                 </p>
                             </div>
                             <div class="action-buttons">
-                                <button class="delete-btn" onclick="deleteProduct(${product.productIndex}, '${product.productName}')">
+                                <button class="delete-btn" data-product-index="${product.productIndex}" data-product-name="${escapeAttribute(product.productName)}">
                                     Delete Product
                                 </button>
                             </div>
@@ -305,6 +306,17 @@
 
             container.innerHTML = html;
         }
+
+        document.getElementById("sellersContainer").addEventListener("click", (event) => {
+            const productButton = event.target.closest(".delete-btn");
+            const sellerButton = event.target.closest(".delete-seller-btn");
+
+            if (productButton) {
+                window.deleteProduct(Number(productButton.dataset.productIndex), productButton.dataset.productName);
+            } else if (sellerButton) {
+                window.deleteSeller(sellerButton.dataset.sellerEmail, sellerButton.dataset.sellerName);
+            }
+        });
 
         // Delete Product
         window.deleteProduct = function (productIndex, productName) {
